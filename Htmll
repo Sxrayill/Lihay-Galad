@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lihay - Galad | The One Who Strays into the Wilderness</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        bark: '#2D1B10',
+                        clay: '#8B5A2B',
+                        forest: '#2C3E2E',
+                        ochre: '#D4A373',
+                        parchment: '#F9F6F0',
+                        parchmentCard: '#FFFDF9',
+                        moss: '#4A5D4E',
+                        accentRed: '#A64B2A'
+                    },
+                    fontFamily: {
+                        serif: ['Georgia', 'Cambria', 'serif'],
+                        sans: ['Inter', 'system-ui', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- FontAwesome for iconography -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Custom earthy scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #F9F6F0;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #8B5A2B;
+            border-radius: 5px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #2C3E2E;
+        }
+
+        /* Subtle tribal texture pattern overlay */
+        .pattern-bg {
+            background-color: #F9F6F0;
+            background-image: radial-gradient(#8B5A2B 0.75px, transparent 0.75px), radial-gradient(#2C3E2E 0.75px, #F9F6F0 0.75px);
+            background-size: 30px 30px;
+            background-position: 0 0, 15px 15px;
+            background-opacity: 0.05;
+        }
+
+        /* Baybayin decorative divider font simulation & layout */
+        .baybayin-border {
+            border-image: linear-gradient(to right, #8B5A2B, #D4A373, #2C3E2E) 1;
+        }
+
+        /* Custom glow on focus for forms */
+        input:focus, select:focus, textarea:focus {
+            outline: 2px solid #8B5A2B;
+        }
+
+        /* Warm Golden-Amber & Terracotta Tribal Motif Background */
+        .hero-tribal-bg {
+            background-color: #592B0C;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(245, 184, 46, 0.95) 0%, rgba(212, 131, 23, 0.85) 25%, rgba(166, 75, 42, 0.9) 55%, rgba(77, 30, 9, 0.98) 90%),
+                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='600' viewBox='0 0 600 600'%3E%3Cdefs%3E%3Cpattern id='tribal' x='0' y='0' width='300' height='300' patternUnits='userSpaceOnUse'%3E%3Cg stroke='%233A1806' stroke-width='2' fill='none' opacity='0.35'%3E%3C!-- Concentric Arcs %26 Sunburst --%3E%3Ccircle cx='0' cy='150' r='140' stroke-width='4'/%3E%3Ccircle cx='0' cy='150' r='120' stroke-dasharray='8,6' stroke-width='3'/%3E%3Ccircle cx='0' cy='150' r='100' stroke-width='2'/%3E%3Ccircle cx='0' cy='150' r='75' fill='%23F5B82E' opacity='0.15'/%3E%3C!-- Sun Rays --%3E%3Cpath d='M0,150 L140,150 M0,150 L130,80 M0,150 L130,220 M0,150 L98,52 M0,150 L98,248 M0,150 L52,98 M0,150 L52,202' stroke-width='3'/%3E%3C!-- Chevron Triangles Band --%3E%3Cpath d='M140,10 L160,30 L140,50 L160,70 L140,90 L160,110 L140,130 L160,150 L140,170 L160,190 L140,210 L160,230 L140,250 L160,270 L140,290' stroke-width='3'/%3E%3Cpath d='M160,10 L180,30 L160,50 L180,70 L160,90 L180,110 L160,130 L180,150 L160,170 L180,190 L160,210 L180,230 L160,250 L180,270 L160,290' stroke-width='3'/%3E%3C!-- Diamond Patterns --%3E%3Cpolygon points='210,40 230,20 250,40 230,60' fill='%238B5A2B' opacity='0.2' stroke-width='2'/%3E%3Cpolygon points='215,40 230,25 245,40 230,55' stroke-width='1.5'/%3E%3Cpolygon points='210,140 230,120 250,140 230,160' fill='%238B5A2B' opacity='0.2' stroke-width='2'/%3E%3Cpolygon points='210,240 230,220 250,240 230,260' fill='%238B5A2B' opacity='0.2' stroke-width='2'/%3E%3C!-- Tribal Fish %26 Horn Motifs --%3E%3Cpath d='M210,80 C230,70 250,90 260,85 C250,100 230,95 210,80 Z' fill='%233A1806' opacity='0.25'/%3E%3Cpath d='M210,180 C230,170 250,190 260,185 C250,200 230,195 210,180 Z' fill='%233A1806' opacity='0.25'/%3E%3Cpath d='M40,250 C70,220 120,220 150,250 C120,240 70,240 40,250 Z' fill='%233A1806' opacity='0.3'/%3E%3C/g%3E%3C/pattern%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='url(%23tribal)'/%3E%3C/svg%3E");
+            background-size: cover, 350px 350px;
+            background-repeat: no-repeat, repeat;
+        }
+    </style>
+</head>
+<body class="bg-parchment text-bark font-sans leading-relaxed selection:bg-ochre selection:text-bark min-h-screen flex flex-col pattern-bg">
+
+    <!-- ========================================== -->
+    <!-- NAVIGATION BAR                             -->
+    <!-- ========================================== -->
+    <header id="main-header" class="sticky top-0 z-40 bg-parchmentCard/95 backdrop-blur border-b-2 border-ochre/40 shadow-sm transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
+            
+            <!-- Brand & Baybayin Script -->
+            <a href="#hero" class="group flex items-center space-x-3">
+                <span class="w-10 h-10 rounded-full bg-forest text-parchment flex items-center justify-center font-bold text-lg shadow-inner group-hover:bg-clay transition-colors">
+                    ᜎ
+                </span>
+                <div>
+                    <span class="block text-xl font-bold font-serif tracking-tight text-forest group-hover:text-clay transition-colors">
+                        Lihay-Galad
+                    </span>
+                    <span class="block text-xs font-semibold tracking-widest uppercase text-clay">
+                        ᜎᜒᜑᜌ᜔ • ᜄᜎᜇ᜔
+                    </span>
+                </div>
+            </a>
+
+            <!-- Desktop Links (Internal Anchor Links) -->
+            <nav id="desktop-nav" class="hidden md:flex items-center space-x-6 text-sm font-medium">
+                <a href="#about" class="text-bark/80 hover:text-forest transition-colors hover:underline underline-offset-4">&sect; About</a>
+                <a href="#milestones" class="text-bark/80 hover:text-forest transition-colors hover:underline underline-offset-4">&sect; Milestones</a>
+                <a href="#destinations" class="text-bark/80 hover:text-forest transition-colors hover:underline underline-offset-4">&sect; Trails</a>
+                <a href="#gallery" class="text-bark/80 hover:text-forest transition-colors hover:underline underline-offset-4">&sect; Gallery</a>
+                <a href="#stats" class="text-bark/80 hover:text-forest transition-colors hover:underline underline-offset-4">&sect; Life Stats</a>
+                <a href="#media" class="text-bark/80 hover:text-forest transition-colors hover:underline underline-offset-4">&sect; Media</a>
+                <a href="#guestbook" class="bg-forest text-parchment px-4 py-2 rounded-lg hover:bg-clay transition-all duration-200 shadow-sm flex items-center gap-2">
+                    <i class="fa-solid font-normal fa-book-open text-xs"></i> Sign Guestbook
+                </a>
+            </nav>
+
+            <!-- Mobile Menu Toggle Button -->
+            <button id="mobile-menu-btn" aria-label="Toggle Navigation Menu" class="md:hidden p-2 rounded-lg text-forest hover:bg-ochre/20 focus:outline-none">
+                <i id="menu-icon" class="fa-solid fa-bars text-xl"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Navigation Drawer -->
+        <div id="mobile-menu" class="hidden md:hidden bg-parchmentCard border-b border-ochre/40 px-4 pt-2 pb-6 space-y-3">
+            <a href="#about" class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-bark hover:bg-ochre/20">&sect; About &amp; Meaning</a>
+            <a href="#milestones" class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-bark hover:bg-ochre/20">&sect; Milestones</a>
+            <a href="#destinations" class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-bark hover:bg-ochre/20">&sect; Trail Guides</a>
+            <a href="#gallery" class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-bark hover:bg-ochre/20">&sect; Photo Gallery</a>
+            <a href="#stats" class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-bark hover:bg-ochre/20">&sect; Life Stats</a>
+            <a href="#media" class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-bark hover:bg-ochre/20">&sect; Media Player</a>
+            <a href="#guestbook" class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-parchment bg-forest hover:bg-clay text-center">&hearts; Sign Guestbook</a>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT WRAPPER -->
+    <main id="main-content" class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-16">
+
+        <!-- ========================================== -->
+        <!-- HERO SECTION                               -->
+        <!-- ========================================== -->
+        <section id="hero" class="relative rounded-2xl overflow-hidden hero-tribal-bg text-parchment shadow-2xl border-2 border-ochre/60">
+            <!-- Decorative Background Overlay & Vignette -->
+            <div class="absolute inset-0 bg-gradient-to-r from-bark/90 via-bark/60 to-transparent z-10"></div>
+            
+            <!-- Optional subtle texture overlay -->
+            <div class="absolute inset-0 opacity-20 bg-[radial-gradient(#FFFDF9_1px,transparent_1px)] [background-size:16px_16px] z-10 pointer-events-none"></div>
+
+            <div class="relative z-20 max-w-3xl px-6 py-16 sm:py-24 sm:px-12 space-y-6">
+                <!-- Tag Badge -->
+                <div class="inline-flex items-center space-x-2 bg-bark/80 backdrop-blur text-ochre px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider border border-ochre/50 shadow-md">
+                    <span>&#127956; My Life Tour Project</span>
+                    <span class="text-clay">&bull;</span>
+                    <span>Cyryll&#39;s Journeys</span>
+                </div>
+
+                <!-- Main Title Requirement H1 -->
+                <h1 class="text-3xl sm:text-5xl font-extrabold font-serif tracking-tight leading-tight text-parchment drop-shadow-md">
+                    Lihay - Galad: <span class="italic text-ochre font-normal block sm:inline drop-shadow">The One Who Strays into the Wilderness</span>
+                </h1>
+
+                <!-- Baybayin Accent Display -->
+                <div class="text-2xl sm:text-3xl font-serif text-ochre tracking-widest opacity-95 select-none drop-shadow-sm">
+                    ᜎᜒᜑᜌ᜔ &mdash; ᜄᜎᜇ᜔
+                </div>
+
+                <!-- Intro Paragraph Requirement <p> -->
+                <p class="text-base sm:text-lg text-parchment/95 leading-relaxed font-sans drop-shadow-sm">
+                    Welcome to my personal digital compass! I am <strong>Cyryll</strong>, a student, hiker, and explorer at heart. <em>Lihay-Galad</em> captures my life philosophy: stepping off beaten concrete highways to wander through untouched Philippine mountains, rivers, and coastal trails. Join me as I share my milestones, summit records, and stories from the wild!
+                </p>
+
+                <!-- Action Buttons & External Link Requirement -->
+                <div class="pt-4 flex flex-wrap gap-4 items-center">
+                    <a href="#destinations" class="bg-ochre text-bark font-bold px-6 py-3 rounded-lg hover:bg-parchment hover:text-forest transition-all shadow-lg flex items-center gap-2 border border-ochre/60">
+                        <i class="fa-solid fa-compass"></i> Explore Trail Reports
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- SECTION 1: ABOUT ME & LIHAY-GALAD ETYMOLOGY-->
+        <!-- ========================================== -->
+        <section id="about" class="bg-parchmentCard rounded-2xl p-6 sm:p-10 shadow-md border border-ochre/30 space-y-8">
+            <header class="border-b border-ochre/30 pb-4 flex items-center justify-between">
+                <div>
+                    <h2 class="text-2xl sm:text-3xl font-bold font-serif text-forest flex items-center gap-3">
+                        <span class="text-clay text-xl">&sect;</span> About Me &amp; The Meaning of &quot;Lihay-Galad&quot;
+                    </h2>
+                    <p class="text-xs sm:text-sm text-clay font-medium uppercase tracking-wider mt-1">Roots, Etymology &amp; Personal Background</p>
+                </div>
+                <span class="text-3xl text-ochre select-none hidden sm:inline">ᜎᜒᜑᜌ᜔</span>
+            </header>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <!-- Textual Content & Etymology Breakdown -->
+                <div class="space-y-4">
+                    <h3 class="text-xl font-bold text-clay font-serif">The Etymology of Lihay-Galad</h3>
+                    <p class="text-bark/90 text-sm sm:text-base leading-relaxed">
+                        The title <strong class="text-forest">&quot;Lihay-Galad&quot;</strong> was chosen because it sounds ancient, rhythmic, and deeply rooted in classic Tagalog lore. By combining two ancient root words, it forms a poetic descriptor of my appetite for outdoor adventure:
+                    </p>
+
+                    <div class="space-y-3 pt-2">
+                        <div class="p-4 bg-parchment rounded-xl border-l-4 border-clay shadow-sm">
+                            <h4 class="font-bold text-forest text-sm uppercase tracking-wider flex items-center justify-between">
+                                <span>1. Lihay (ᜎᜒᜑᜌ᜔)</span>
+                                <span class="text-xs text-clay font-normal italic">Root Verb</span>
+                            </h4>
+                            <p class="text-xs sm:text-sm text-bark/80 mt-1">
+                                Means to veer off the beaten path, turn away from the mainstream road, or venture deliberately into the untamed wild.
+                            </p>
+                        </div>
+
+                        <div class="p-4 bg-parchment rounded-xl border-l-4 border-forest shadow-sm">
+                            <h4 class="font-bold text-forest text-sm uppercase tracking-wider flex items-center justify-between">
+                                <span>2. Galad (ᜄᜎᜇ᜔)</span>
+                                <span class="text-xs text-clay font-normal italic">Archaic Noun/Verb</span>
+                            </h4>
+                            <p class="text-xs sm:text-sm text-bark/80 mt-1">
+                                An archaic root associated with wandering, roaming freely, or traversing vast, untouched lands and thick mountain forests.
+                            </p>
+                        </div>
+                    </div>
+
+                    <p class="text-sm text-bark/90 italic pt-2">
+                        &quot;Joined together, Lihay-Galad translates roughly to &lsquo;The One Who Strays into the Wilderness&rsquo; &mdash; a title I wear with pride on every summit.&quot;
+                    </p>
+                </div>
+
+                <!-- Unordered List Requirement: Favorites -->
+                <div class="bg-parchment p-6 rounded-xl border border-ochre/40 space-y-4">
+                    <h3 class="text-lg font-bold text-forest font-serif flex items-center gap-2 border-b border-ochre/20 pb-2">
+                        <i class="fa-solid fa-leaf text-moss"></i> Cyryll&#39;s Trail &amp; Life Essentials
+                    </h3>
+                    <p class="text-xs text-bark/70">A list of items, tracks, and games that fuel my journeys:</p>
+                    
+                    <!-- HTML Requirement: <ul> Unordered List -->
+                    <ul class="space-y-2 text-sm text-bark/90 list-disc list-inside marker:text-clay">
+                        <li><strong>Favorite Trail Snacks:</strong> Dried mangoes, trail mix, emergency jelly pouches, and canned coffee.</li>
+                        <li><strong>OPM Hiking Soundtrack:</strong> Angela Ken, Shamrock, IV of Spades, and Ben&amp;Ben.</li>
+                        <li><strong>Essential Gear:</strong> Sturdy trekking poles, waterproof tarp, and a reliable headlamp.</li>
+                    </ul>
+                </div>
+
+                    <div class="bg-parchmentCard p-4 rounded-lg border border-ochre/20 space-y-2">
+                        <!-- Audio Tag with Controls -->
+                        <audio controls class="w-full focus:outline-none rounded">
+                            <source src="AKO NAMAN MUNA.mp3" type="audio/mpeg">
+                            <source src="AKO NAMAN MUNA.ogg" type="audio/ogg">
+                            Your browser does not support the audio element.
+                        </audio>
+                        <p class="text-[11px] text-clay text-center italic">
+                            Favorite Song: <code class="bg-ochre/20 px-1 py-0.5 rounded text-bark">Ako Naman Muna by Agela Ken</code>
+                        </p>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </section>
+
+
+        <!-- ========================================== -->
+        <!-- SECTION 2: MILESTONES (ORDERED LIST)      -->
+        <!-- ========================================== -->
+        <section id="milestones" class="bg-parchmentCard rounded-2xl p-6 sm:p-10 shadow-md border border-ochre/30 space-y-6">
+            <header class="border-b border-ochre/30 pb-4">
+                <h2 class="text-2xl sm:text-3xl font-bold font-serif text-forest flex items-center gap-3">
+                    <span class="text-clay text-xl">&sect;</span> "Bantayog"
+                </h2>
+                <p class="text-xs sm:text-sm text-clay font-medium uppercase tracking-wider mt-1">ᜊᜈ᜔ᜆᜌᜓᜄ᜔</p>
+            </header>
+
+            <!-- HTML Requirement: <ol> Ordered List -->
+            <div class="relative pl-2 sm:pl-6 border-l-2 border-ochre/50 space-y-6 my-4">
+                <ol class="space-y-6 list-none">
+                    
+                    <li class="relative pl-6 sm:pl-8 group">
+                        <span class="absolute -left-[17px] top-1.5 w-8 h-8 rounded-full bg-forest text-parchment font-bold text-xs flex items-center justify-center border-2 border-parchment shadow">1</span>
+                        <div class="bg-parchment p-4 rounded-xl border border-ochre/30 shadow-sm">
+                            <h3 class="text-base font-bold text-forest">Ang Luntiang Lupain sa Paanan</h3>
+                            <p class="text-xs text-clay font-medium">"Where My Roots Took Hold"</p>
+                            <p class="text-sm text-bark/80 mt-1, text-justify">Every great mountain journey begins at the base, and mine started surrounded by the lush landscapes and quiet fields of San Miguel, Bulacan. Growing up in the countryside built a strong foundation within me—one rooted in humility, simplicity, and a deep appreciation for nature. These peaceful foothills laid the groundwork for the endurance and character I carry with me today.</p>
+                        </div>
+                    </li>
+
+                    <li class="relative pl-6 sm:pl-8 group">
+                        <span class="absolute -left-[17px] top-1.5 w-8 h-8 rounded-full bg-clay text-parchment font-bold text-xs flex items-center justify-center border-2 border-parchment shadow">2</span>
+                        <div class="bg-parchment p-4 rounded-xl border border-ochre/30 shadow-sm">
+                            <h3 class="text-base font-bold text-forest">Ang Paglalakbay</h3>
+                            <p class="text-xs text-clay font-medium">"Stepping Out of My Comfort Zone"</p>
+                            <p class="text-sm text-bark/80 mt-1, text-justify">Equipped with a backpack full of dreams and determination, I set out on my first major traverse—leaving the familiar paths of my home province to head toward the vast cityscape of Manila. As a young dreamer willing to adapt to new terrain, I embraced the challenge of moving to the metropolis to pursue higher ground and bigger opportunities.</p>
+                        </div>
+                    </li>
+
+                    <li class="relative pl-6 sm:pl-8 group">
+                        <span class="absolute -left-[17px] top-1.5 w-8 h-8 rounded-full bg-ochre text-bark font-bold text-xs flex items-center justify-center border-2 border-parchment shadow">3</span>
+                        <div class="bg-parchment p-4 rounded-xl border border-ochre/30 shadow-sm">
+                            <h3 class="text-base font-bold text-forest">Paghakbang</h3>
+                            <p class="text-xs text-clay font-medium">"The Gateway to My Climb"</p>
+                            <p class="text-sm text-bark/80 mt-1, text-justify">Passing the admissions for the Polytechnic University of the Philippines (PUP) marked my official jump-off point. Standing at the threshold of this institution was proof of my grit and perseverance. This is where my formal climb began—where late nights, lessons, and relentless effort became the essential gear for my upward journey.</p>
+                        </div>
+                    </li>
+
+                    <li class="relative pl-6 sm:pl-8 group">
+                        <span class="absolute -left-[17px] top-1.5 w-8 h-8 rounded-full bg-moss text-parchment font-bold text-xs flex items-center justify-center border-2 border-parchment shadow">4</span>
+                        <div class="bg-parchment p-4 rounded-xl border border-ochre/30 shadow-sm">
+                            <h3 class="text-base font-bold text-forest">Matarik na landas</h3>
+                            <p class="text-xs text-clay font-medium">"Navigating the Steepest Slopes"</p>
+                            <p class="text-sm text-bark/80 mt-1, text-justify">I am currently navigating the high ridge as a 3rd-year university student—balancing demanding academic challenges while continuing to press forward. Amidst the steep climb of student life, I discovered my true sanctuary: the physical trails of mountain hiking.
+Each summit I reach in the wild serves as a living reminder of my path: no matter how steep or exhausting the trail of life gets, the view from the top makes every single step worth it.</p>
+                        </div>
+                    </li>
+
+                </ol>
+            </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- SECTION 3: FEATURED MEMORY (<figure>)      -->
+        <!-- ========================================== -->
+        <section id="Akyat" class="bg-parchmentCard rounded-2xl p-6 sm:p-10 shadow-md border border-ochre/30 space-y-6">
+            <header class="border-b border-ochre/30 pb-4">
+                <h2 class="text-2xl sm:text-3xl font-bold font-serif text-forest flex items-center gap-3">
+                    <span class="text-clay text-xl">&sect;</span> Akyat
+                </h2>
+                <p class="text-xs sm:text-sm text-clay font-medium uppercase tracking-wider mt-1">Highlighted Highlight of the Lihay-Galad Archive</p>
+            </header>
+
+            <!-- HTML Requirement: <figure> with <figcaption> -->
+            <figure class="bg-parchment rounded-xl p-4 sm:p-6 border border-ochre/40 shadow-sm grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+                <div class="md:col-span-7 overflow-hidden rounded-lg shadow border border-clay/20">
+                    <img src="Mt. Pinatubo-20261031T082140Z-1-001/Mt. Pinatubo/CoverPageMt.Pinatubo.png" 
+                         onerror="this.onerror=null; this.src='https://placehold.co/800x500/2C3E2E/F9F6F0?text=Mt.+Pinatubo+Crater+Lake';" 
+                         alt="Cyryll standing at the crater rim of Mt Pinatubo looking at turquoise waters" 
+                         class="w-full h-auto object-cover hover:scale-105 transition-transform duration-500">
+                </div>
+                <!-- HTML Requirement: <figcaption> -->
+                <figcaption class="md:col-span-5 space-y-3">
+                    <div class="inline-block bg-clay text-parchment text-xs font-bold px-2.5 py-1 rounded">
+                        &#127956; Featured Summit Story  
+                    </div>
+                    <h3 class="text-xl font-bold text-forest font-serif">A Beautiful Disaster</h3>
+                    <p class="text-sm text-bark/90 leading-relaxed">
+                        &quot;After hours of traversing dusty 4x4 lahar trails and trekking along scorching riverbeds under the Botolan sun, catching sight of Mt. Pinatubo&#39;s emerald-turquoise crater lake felt like stepping into an ancient myth. It perfectly embodied the spirit of <em>Lihay-Galad</em> &mdash; straying into raw, altered landscapes born from destruction into serene beauty.&quot;
+                    </p>
+                    <div class="text-xs text-clay font-semibold pt-2 border-t border-ochre/30">
+                        Location: Zambales / Tarlac / Pampanga Tri-Boundary &bull; Elevation: ~960m
+                    </div>
+                </figcaption>
+            </figure>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- SECTION 4: DESTINATIONS & PHOTO GALLERY    -->
+        <!-- ========================================== -->
+        <section id="gallery" class="bg-parchmentCard rounded-2xl p-6 sm:p-10 shadow-md border border-ochre/30 space-y-8">
+            <header class="border-b border-ochre/30 pb-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div>
+                    <h2 class="text-2xl sm:text-3xl font-bold font-serif text-forest flex items-center gap-3">
+                        <span class="text-clay text-xl">&sect;</span> Personal Photo Gallery &amp; Trail Logs
+                    </h2>
+                    <p class="text-xs sm:text-sm text-clay font-medium uppercase tracking-wider mt-1">Destinations Explored by Cyryll</p>
+                </div>
+                
+                <!-- Destination Filter Tabs -->
+                <div id="gallery-filters" class="flex flex-wrap gap-2 text-xs font-semibold">
+                    <button data-filter="all" class="filter-btn bg-forest text-parchment px-3 py-1.5 rounded-md transition-colors">All (7)</button>
+                    <button data-filter="mountain" class="filter-btn bg-parchment text-bark border border-ochre/40 px-3 py-1.5 rounded-md hover:bg-ochre/20 transition-colors">Mountains</button>
+                    <button data-filter="water" class="filter-btn bg-parchment text-bark border border-ochre/40 px-3 py-1.5 rounded-md hover:bg-ochre/20 transition-colors">Beach &amp; Cliff</button>
+                </div>
+            </header>
+
+            <!-- Gallery Grid with 7 Required Folders/Places -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                <!-- 1. Mt. Makiling -->
+                <article class="gallery-card mountain bg-parchment rounded-xl overflow-hidden border border-ochre/30 shadow-sm hover:shadow-md transition-shadow group flex flex-col">
+                    <div class="relative overflow-hidden h-48 bg-ochre/20">
+                        <img src="Mt. Makiling-20261031T082157Z-1-001/Mt. Makiling/CoverPageMt.Makiling.jpg" 
+                             onerror="this.onerror=null; this.src='https://placehold.co/600x400/2C3E2E/F9F6F0?text=Mt.+Makiling';" 
+                             alt="Dense rainforest canopy and lush greenery on Mt. Makiling trail" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 cursor-pointer gallery-img">
+                        <span class="absolute top-3 left-3 bg-bark/80 text-parchment text-xs font-bold px-2.5 py-1 rounded">Laguna</span>
+                    </div>
+                    <div class="p-4 flex-grow flex flex-col justify-between space-y-2">
+                        <div>
+                            <h3 class="text-lg font-bold text-forest font-serif">Mt. Makiling</h3>
+                            <p class="text-xs text-bark/80 mt-1">
+                                Legendary dormant volcano shrouded in folklore of Maria Makiling. Known for mossy forests, warm mud springs, and rich biodiversity.
+                            </p>
+                        </div>
+                        <div class="text-xs text-clay font-medium pt-2 border-t border-ochre/20">
+                            Difficulty: 4/9 &bull; Peak 2 Trail
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 2. Mt. Pinatubo -->
+                <article class="gallery-card mountain bg-parchment rounded-xl overflow-hidden border border-ochre/30 shadow-sm hover:shadow-md transition-shadow group flex flex-col">
+                    <div class="relative overflow-hidden h-48 bg-ochre/20">
+                        <img src="Mt. Pinatubo-20261031T082140Z-1-001/Mt. Pinatubo/Pinatubo.jpg" 
+                             onerror="this.onerror=null; this.src='https://placehold.co/600x400/2C3E2E/F9F6F0?text=Mt.+Pinatubo';" 
+                             alt="Majestic crater lake of Mt Pinatubo encircled by steep volcanic walls" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 cursor-pointer gallery-img">
+                        <span class="absolute top-3 left-3 bg-bark/80 text-parchment text-xs font-bold px-2.5 py-1 rounded">Zambales / Tarlac</span>
+                    </div>
+                    <div class="p-4 flex-grow flex flex-col justify-between space-y-2">
+                        <div>
+                            <h3 class="text-lg font-bold text-forest font-serif">Mt. Pinatubo</h3>
+                            <p class="text-xs text-bark/80 mt-1">
+                                Famous ultra-prominent volcano known for its 1991 eruption. Features a breathtaking turquoise crater caldera reached via 4x4 lahar canyon rides.
+                            </p>
+                        </div>
+                        <div class="text-xs text-clay font-medium pt-2 border-t border-ochre/20">
+                            Difficulty: 2/9 &bull; Crater Trail
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 3. Mt. Kalisungan -->
+                <article class="gallery-card mountain bg-parchment rounded-xl overflow-hidden border border-ochre/30 shadow-sm hover:shadow-md transition-shadow group flex flex-col">
+                    <div class="relative overflow-hidden h-48 bg-ochre/20">
+                        <img src="Mt. Kalisungan-20261031T082150Z-1-001/Mt. Kalisungan/CoverPageMt.Kalisungan.png" 
+                             onerror="this.onerror=null; this.src='https://placehold.co/600x400/2C3E2E/F9F6F0?text=Mt.+Kalisungan';" 
+                             alt="Scenic grasslands and view of Laguna de Bay from Mt. Kalisungan summit" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 cursor-pointer gallery-img">
+                        <span class="absolute top-3 left-3 bg-bark/80 text-parchment text-xs font-bold px-2.5 py-1 rounded">Calauan, Laguna</span>
+                    </div>
+                    <div class="p-4 flex-grow flex flex-col justify-between space-y-2">
+                        <div>
+                            <h3 class="text-lg font-bold text-forest font-serif">Mt. Kalisungan</h3>
+                            <p class="text-xs text-bark/80 mt-1">
+                                Historic hill peak in Calauan offering panoramic views of 7 Lakes of San Pablo and Laguna de Bay. Rich in WWII field history.
+                            </p>
+                        </div>
+                        <div class="text-xs text-clay font-medium pt-2 border-t border-ochre/20">
+                            Difficulty: 3/9 &bull; Summit Grasslands
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 4. Mt. Kapigpiglatan -->
+                <article class="gallery-card mountain bg-parchment rounded-xl overflow-hidden border border-ochre/30 shadow-sm hover:shadow-md transition-shadow group flex flex-col">
+                    <div class="relative overflow-hidden h-48 bg-ochre/20">
+                        <img src="Mt. Kapigpiglatan-20261031T082154Z-1-001/Mt. Kapigpiglatan/CoverPageMt.Kapigpiglatan.jpg" 
+                             onerror="this.onerror=null; this.src='https://placehold.co/600x400/2C3E2E/F9F6F0?text=Mt.+Kapigpiglatan';" 
+                             alt="Rugged rocky peaks and pine trees of Mt Kapigpiglatan" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 cursor-pointer gallery-img">
+                        <span class="absolute top-3 left-3 bg-bark/80 text-parchment text-xs font-bold px-2.5 py-1 rounded">Candelaria, Zambales</span>
+                    </div>
+                    <div class="p-4 flex-grow flex flex-col justify-between space-y-2">
+                        <div>
+                            <h3 class="text-lg font-bold text-forest font-serif">Mt. Kapigpiglatan</h3>
+                            <p class="text-xs text-bark/80 mt-1">
+                                An emerging trekking destination in Zambales characterized by sharp rock formations, pine ridges, and wide open winds.
+                            </p>
+                        </div>
+                        <div class="text-xs text-clay font-medium pt-2 border-t border-ochre/20">
+                            Difficulty: 4/9 &bull; Rocky Ridge Track
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 5. Via Ferrata Benguet / Goat Cliffing -->
+                <article class="gallery-card water mountain bg-parchment rounded-xl overflow-hidden border border-ochre/30 shadow-sm hover:shadow-md transition-shadow group flex flex-col">
+                    <div class="relative overflow-hidden h-48 bg-ochre/20">
+                        <img src="Goat Cliffting-20261031T082145Z-1-001/Goat Cliffting/CoverPageGoatCliffting.png" 
+                             onerror="this.onerror=null; this.src='https://placehold.co/600x400/2C3E2E/F9F6F0?text=Via+Ferrata+Benguet';" 
+                             alt="Dramatic vertical cliff climbing harness route in Via Ferrata Benguet" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 cursor-pointer gallery-img">
+                        <span class="absolute top-3 left-3 bg-bark/80 text-parchment text-xs font-bold px-2.5 py-1 rounded">Benguet</span>
+                    </div>
+                    <div class="p-4 flex-grow flex flex-col justify-between space-y-2">
+                        <div>
+                            <h3 class="text-lg font-bold text-forest font-serif">Via Ferrata Benguet</h3>
+                            <p class="text-xs text-bark/80 mt-1">
+                                Thrilling &quot;Goat Cliffing&quot; adventure featuring iron rungs, wire cables, and vertical wall ascents in the chilly mountain air of Benguet.
+                            </p>
+                        </div>
+                        <div class="text-xs text-clay font-medium pt-2 border-t border-ochre/20">
+                            Technical Cliff Climbing &bull; High Adrenaline
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 6. Calatagan Batangas -->
+                <article class="gallery-card water bg-parchment rounded-xl overflow-hidden border border-ochre/30 shadow-sm hover:shadow-md transition-shadow group flex flex-col">
+                    <div class="relative overflow-hidden h-48 bg-ochre/20">
+                        <img src="Calatagan Batangas-20261031T082141Z-1-001/Calatagan Batangas/CoverPageCalataganBatangas.png" 
+                             onerror="this.onerror=null; this.src='https://placehold.co/600x400/2C3E2E/F9F6F0?text=Calatagan+Batangas';" 
+                             alt="Golden sand shoreline and calm sea tides of Calatagan Beach" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 cursor-pointer gallery-img">
+                        <span class="absolute top-3 left-3 bg-bark/80 text-parchment text-xs font-bold px-2.5 py-1 rounded">Batangas</span>
+                    </div>
+                    <div class="p-4 flex-grow flex flex-col justify-between space-y-2">
+                        <div>
+                            <h3 class="text-lg font-bold text-forest font-serif">Calatagan Beach</h3>
+                            <p class="text-xs text-bark/80 mt-1">
+                                Tranquil coastal escape known for golden sand bars, low-tide marine life walks, historical lighthouses, and serene sunset camps.
+                            </p>
+                        </div>
+                        <div class="text-xs text-clay font-medium pt-2 border-t border-ochre/20">
+                            Coastal Trek &bull; Beach Camping
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 7. Mascap Twin Hike -->
+                <article class="gallery-card mountain bg-parchment rounded-xl overflow-hidden border border-ochre/30 shadow-sm hover:shadow-md transition-shadow group flex flex-col sm:col-span-2 lg:col-span-1">
+                    <div class="relative overflow-hidden h-48 bg-ochre/20">
+                        <img src="Mascap Twin Hike-20261031T082149Z-1-001/Mascap Twin Hike/CoverPageMascapTwinHike.png" 
+                             onerror="this.onerror=null; this.src='https://placehold.co/600x400/2C3E2E/F9F6F0?text=Mascap+Twin+Hike';" 
+                             alt="Imposing limestone rock formations on Espadang Bato and Bulaklak Peak trail" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 cursor-pointer gallery-img">
+                        <span class="absolute top-3 left-3 bg-bark/80 text-parchment text-xs font-bold px-2.5 py-1 rounded">Rodriguez, Rizal</span>
+                    </div>
+                    <div class="p-4 flex-grow flex flex-col justify-between space-y-2">
+                        <div>
+                            <h3 class="text-lg font-bold text-forest font-serif">Mascap Twin Hike</h3>
+                            <p class="text-xs text-bark/80 mt-1">
+                                Double summit adventure combining Mt. Espadang Bato (sword-like limestone rock) and Bulaklak Peak with views of the Sierra Madre range.
+                            </p>
+                        </div>
+                        <div class="text-xs text-clay font-medium pt-2 border-t border-ochre/20">
+                            Difficulty: 3/9 &bull; Espadang Bato &amp; Bulaklak Peak
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- SECTION 5: DATA TABLE (LIFE STATS)        -->
+        <!-- ========================================== -->
+        <section id="stats" class="bg-parchmentCard rounded-2xl p-6 sm:p-10 shadow-md border border-ochre/30 space-y-6">
+            <header class="border-b border-ochre/30 pb-4">
+                <h2 class="text-2xl sm:text-3xl font-bold font-serif text-forest flex items-center gap-3">
+                    <span class="text-clay text-xl">&sect;</span> My Life Stats &amp; Summit Rankings
+                </h2>
+                <p class="text-xs sm:text-sm text-clay font-medium uppercase tracking-wider mt-1">Structured Data Table (Table, thead, tbody, tr, th, td, colspan &amp; rowspan used)</p>
+            </header>
+
+            <!-- Responsive Table Wrapper -->
+            <div class="overflow-x-auto rounded-xl border border-ochre/40 shadow-sm">
+                <!-- HTML Requirement: <table>, <thead>, <tbody>, <tr>, <th>, <td> -->
+                <table class="w-full text-left text-sm border-collapse min-w-[600px]">
+                    <thead class="bg-forest text-parchment text-xs uppercase font-semibold">
+                        <tr>
+                            <!-- HTML Requirement: rowspan used -->
+                            <th scope="col" rowspan="2" class="py-3 px-4 border-r border-clay/40 text-center">Category</th>
+                            <th scope="col" rowspan="2" class="py-3 px-4 border-r border-clay/40">Destination Name</th>
+                            <!-- HTML Requirement: colspan used -->
+                            <th scope="col" colspan="2" class="py-2 px-4 border-b border-r border-clay/40 text-center">Trail Metrics</th>
+                            <th scope="col" rowspan="2" class="py-3 px-4 text-center">Summit Rating</th>
+                        </tr>
+                        <tr>
+                            <th scope="col" class="py-2 px-3 border-r border-clay/40 text-xs font-normal">Location</th>
+                            <th scope="col" class="py-2 px-3 border-r border-clay/40 text-xs font-normal">Difficulty Rating</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-ochre/30 bg-parchment text-bark/90">
+                        
+                        <!-- Row 1: Rowspan for Mountains -->
+                        <tr>
+                            <td rowspan="5" class="py-4 px-4 font-bold text-forest border-r border-ochre/30 text-center bg-ochre/10">
+                                Mountain Summits
+                            </td>
+                            <td class="py-3 px-4 font-semibold border-r border-ochre/20">Mt. Pinatubo</td>
+                            <td class="py-3 px-4 border-r border-ochre/20">Zambales / Tarlac</td>
+                            <td class="py-3 px-4 border-r border-ochre/20">2/9 (Moderate Trek)</td>
+                            <td class="py-3 px-4 text-center text-accentRed font-bold">&starf;&starf;&starf;&starf;&starf; (5.0)</td>
+                        </tr>
+
+                        <tr>
+                            <td class="py-3 px-4 font-semibold border-r border-ochre/20">Mt. Makiling</td>
+                            <td class="py-3 px-4 border-r border-ochre/20">Los Ba&ntilde;os, Laguna</td>
+                            <td class="py-3 px-4 border-r border-ochre/20">4/9 (Challenging)</td>
+                            <td class="py-3 px-4 text-center text-accentRed font-bold">&starf;&starf;&starf;&starf;&star; (4.8)</td>
+                        </tr>
+
+                        <tr>
+                            <td class="py-3 px-4 font-semibold border-r border-ochre/20">Mascap Twin Hike</td>
+                            <td class="py-3 px-4 border-r border-ochre/20">Rodriguez, Rizal</td>
+                            <td class="py-3 px-4 border-r border-ochre/20">3/9 (Intermediate)</td>
+                            <td class="py-3 px-4 text-center text-accentRed font-bold">&starf;&starf;&starf;&starf;&star; (4.6)</td>
+                        </tr>
+
+                        <tr>
+                            <td class="py-3 px-4 font-semibold border-r border-ochre/20">Mt. Kapigpiglatan</td>
+                            <td class="py-3 px-4 border-r border-ochre/20">Candelaria, Zambales</td>
+                            <td class="py-3 px-4 border-r border-ochre/20">4/9 (Rocky Terrain)</td>
+                            <td class="py-3 px-4 text-center text-accentRed font-bold">&starf;&starf;&starf;&starf;&star; (4.5)</td>
+                        </tr>
+
+                        <tr>
+                            <td class="py-3 px-4 font-semibold border-r border-ochre/20">Mt. Kalisungan</td>
+                            <td class="py-3 px-4 border-r border-ochre/20">Calauan, Laguna</td>
+                            <td class="py-3 px-4 border-r border-ochre/20">3/9 (Minor Climb)</td>
+                            <td class="py-3 px-4 text-center text-accentRed font-bold">&starf;&starf;&starf;&starf;&star; (4.3)</td>
+                        </tr>
+
+                        <!-- Row 2: Rowspan for Adventure & Coastal -->
+                        <tr class="bg-parchmentCard">
+                            <td rowspan="2" class="py-4 px-4 font-bold text-forest border-r border-ochre/30 text-center bg-ochre/10">
+                                Coastal &amp; Cliff Technical
+                            </td>
+                            <td class="py-3 px-4 font-semibold border-r border-ochre/20">Via Ferrata Benguet</td>
+                            <td class="py-3 px-4 border-r border-ochre/20">Goat Cliffing, Benguet</td>
+                            <td class="py-3 px-4 border-r border-ochre/20">Technical Iron Rungs</td>
+                            <td class="py-3 px-4 text-center text-accentRed font-bold">&starf;&starf;&starf;&starf;&starf; (4.9)</td>
+                        </tr>
+
+                        <tr class="bg-parchmentCard">
+                            <td class="py-3 px-4 font-semibold border-r border-ochre/20">Calatagan Beach</td>
+                            <td class="py-3 px-4 border-r border-ochre/20">Calatagan, Batangas</td>
+                            <td class="py-3 px-4 border-r border-ochre/20">Coastal Leisure</td>
+                            <td class="py-3 px-4 text-center text-accentRed font-bold">&starf;&starf;&starf;&starf;&star; (4.4)</td>
+                        </tr>
+
+                        <!-- Total Summary Row using Colspan -->
+                        <tr class="bg-clay text-parchment font-bold">
+                            <!-- HTML Requirement: colspan used -->
+                            <td colspan="3" class="py-3 px-4 text-right uppercase text-xs tracking-wider">
+                                Total Expeditions Archived:
+                            </td>
+                            <td colspan="2" class="py-3 px-4 text-center">
+                                7 Major Destinations (100% Completed &amp; Documented)
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- SECTION 6: AUDIO & VIDEO MULTIMEDIA       -->
+        <!-- ========================================== -->
+                <!-- HTML Requirement: <video> tag with controls -->
+                <div class="bg-parchment p-6 rounded-xl border border-ochre/40 shadow-sm flex flex-col justify-between space-y-4">
+                    <div>
+                        <div class="flex items-center space-x-3 mb-2">
+                            <span class="w-8 h-8 rounded-full bg-forest text-parchment flex items-center justify-center text-xs">
+                                <i class="fa-solid fa-video"></i>
+                            </span>
+                            <h3 class="text-lg font-bold text-forest font-serif">Travel Highlight Clip</h3>
+                        </div>
+                        <p class="text-xs text-bark/80">
+                            Watch a reel snippet of crater trails and cliff trekking.
+                        </p>
+                    </div>
+
+                    <div class="bg-parchmentCard p-3 rounded-lg border border-ochre/20 space-y-2">
+                        <!-- Video Tag with Controls -->
+                        <video controls class="w-full h-48 object-cover rounded-md bg-bark/80">
+                            <source src="CoverPageVideo.mp4" type="video/mp4">
+                            <source src="CoverPageVideo.webm" type="video/webm">
+                            Your browser does not support the video tag.
+                        </video>
+                        <p class="text-[11px] text-clay text-center italic">
+                            Tara Bundok: <code class="bg-ochre/20 px-1 py-0.5 rounded text-bark">Travels</code>
+                        </p>
+                    </div>
+                </div>
+  
+
+            </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- SECTION 7: GUESTBOOK FORM (<form>)        -->
+        <!-- ========================================== -->
+        <section id="guestbook" class="bg-parchmentCard rounded-2xl p-6 sm:p-10 shadow-md border border-ochre/30 space-y-6">
+            <header class="border-b border-ochre/30 pb-4">
+                <h2 class="text-2xl sm:text-3xl font-bold font-serif text-forest flex items-center gap-3">
+                    <span class="text-clay text-xl">&hearts;</span> Sign My Guestbook
+                </h2>
+                <p class="text-xs sm:text-sm text-clay font-medium uppercase tracking-wider mt-1">How was your experience at Lihay-Galad?</p>
+            </header>
+
+            <!-- Success Alert Notification (hidden by default) -->
+            <div id="form-alert" class="hidden p-4 rounded-xl bg-forest text-parchment text-sm flex items-center justify-between border border-ochre/40">
+                <div class="flex items-center gap-3">
+                    <i class="fa-solid fa-circle-check text-ochre text-xl"></i>
+                    <div>
+                        <strong class="block">Salamat! Guestbook Entry Received!</strong>
+                        <span id="alert-message">Thank you for straying into Lihay-Galad!</span>
+                    </div>
+                </div>
+                <button type="button" onclick="document.getElementById('form-alert').classList.add('hidden')" class="text-parchment hover:text-ochre">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+
+            <!-- HTML Requirement: Guestbook Form -->
+            <form id="life-tour-form" class="space-y-6">
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <!-- Text Input 1: Visitor Name -->
+                    <div class="space-y-2">
+                        <label for="visitor_name" class="block text-xs font-bold uppercase tracking-wider text-forest">
+                            Visitor Name <span class="text-accentRed">*</span>
+                        </label>
+                        <input type="text" id="visitor_name" name="visitor_name" required placeholder="e.g. Cyryll John Jimenez" 
+                               class="w-full px-4 py-2.5 rounded-lg bg-parchment border border-ochre/40 text-bark text-sm focus:bg-white transition-all">
+                    </div>
+
+                    <!-- Text Input 2: Email -->
+                    <div class="space-y-2">
+                        <label for="visitor_email" class="block text-xs font-bold uppercase tracking-wider text-forest">
+                            Email Address <span class="text-accentRed">*</span>
+                        </label>
+                        <input type="email" id="visitor_email" name="visitor_email" required placeholder="e.g. cyrylljohnjimenez@example.com" 
+                               class="w-full px-4 py-2.5 rounded-lg bg-parchment border border-ochre/40 text-bark text-sm focus:bg-white transition-all">
+                    </div>
+                </div>
+
+                <!-- Dropdown (<select>) Requirement -->
+                <div class="space-y-2">
+                    <label for="connection" class="block text-xs font-bold uppercase tracking-wider text-forest">
+                        How do you know me? <span class="text-accentRed">*</span>
+                    </label>
+                    <select id="connection" name="connection" required class="w-full px-4 py-2.5 rounded-lg bg-parchment border border-ochre/40 text-bark text-sm focus:bg-white transition-all">
+                        <option value="" disabled selected>Select an option...</option>
+                        <option value="Schoolmate / PUP Classmate">Schoolmate / PUP Classmate</option>
+                        <option value="Fellow Hiker / Outdoorsman">Fellow Hiker / Outdoorsman</option>
+                        <option value="Gaming Friend (MLBB/Anime)">Gaming Friend (MLBB/Anime)</option>
+                        <option value="BPO / Professional Colleague">BPO / Professional Colleague</option>
+                        <option value="First-Time Guest">First-Time Guest / Internet Visitor</option>
+                    </select>
+                </div>
+
+                <!-- Radio Buttons Requirement: Rate my website -->
+                <div class="space-y-3 p-4 bg-parchment rounded-xl border border-ochre/30">
+                    <span class="block text-xs font-bold uppercase tracking-wider text-forest">
+                        Rate my Lihay-Galad website: <span class="text-accentRed">*</span>
+                    </span>
+                    <div class="flex flex-wrap gap-4 text-sm text-bark">
+                        <label class="inline-flex items-center gap-2 cursor-pointer">
+                            <input type="radio" name="rating" value="5 Stars" required class="accent-clay">
+                            <span>&#11088;&#11088;&#11088;&#11088;&#11088; 5 Stars (Summit Peak)</span>
+                        </label>
+                        <label class="inline-flex items-center gap-2 cursor-pointer">
+                            <input type="radio" name="rating" value="4 Stars" class="accent-clay">
+                            <span>&#11088;&#11088;&#11088;&#11088; 4 Stars (Great Trail)</span>
+                        </label>
+                        <label class="inline-flex items-center gap-2 cursor-pointer">
+                            <input type="radio" name="rating" value="3 Stars" class="accent-clay">
+                            <span>&#11088;&#11088;&#11088; 3 Stars (Good Start)</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Checkboxes Requirement: Favorite Life Section -->
+                <div class="space-y-3 p-4 bg-parchment rounded-xl border border-ochre/30">
+                    <span class="block text-xs font-bold uppercase tracking-wider text-forest">
+                        Which life section was your favorite? (Select all that apply):
+                    </span>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm text-bark">
+                        <label class="inline-flex items-center gap-2 cursor-pointer">
+                            <input type="checkbox" name="favorite_section" value="About & Meaning" class="accent-forest">
+                            <span>Etymology &amp; About Me</span>
+                        </label>
+                        <label class="inline-flex items-center gap-2 cursor-pointer">
+                            <input type="checkbox" name="favorite_section" value="Life Milestones" class="accent-forest">
+                            <span>Life Milestones List</span>
+                        </label>
+                        <label class="inline-flex items-center gap-2 cursor-pointer">
+                            <input type="checkbox" name="favorite_section" value="Photo Gallery" class="accent-forest">
+                            <span>Trail Photo Gallery</span>
+                        </label>
+                        <label class="inline-flex items-center gap-2 cursor-pointer">
+                            <input type="checkbox" name="favorite_section" value="Life Stats Table" class="accent-forest">
+                            <span>Life Stats &amp; Summit Rankings</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Optional Message Box -->
+                <div class="space-y-2">
+                    <label for="visitor_message" class="block text-xs font-bold uppercase tracking-wider text-forest">
+                        Leave a Trail Note / Message (Optional):
+                    </label>
+                    <textarea id="visitor_message" name="visitor_message" rows="3" placeholder="Leave words of encouragement or trail recommendations..." 
+                              class="w-full px-4 py-2.5 rounded-lg bg-parchment border border-ochre/40 text-bark text-sm focus:bg-white transition-all"></textarea>
+                </div>
+
+                <!-- Submit Button Requirement -->
+                <button type="submit" class="w-full sm:w-auto bg-forest text-parchment font-bold px-8 py-3 rounded-lg hover:bg-clay transition-all shadow-md flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-paper-plane"></i> Submit Guestbook Entry
+                </button>
+            </form>
+        </section>
+
+    </main>
+
+    <!-- ========================================== -->
+    <!-- LIGHTBOX MODAL FOR GALLERY IMAGES         -->
+    <!-- ========================================== -->
+    <div id="lightbox" class="fixed inset-0 z-50 hidden bg-bark/90 backdrop-blur flex items-center justify-center p-4">
+        <div class="relative max-w-4xl w-full bg-parchmentCard rounded-2xl overflow-hidden shadow-2xl border border-ochre/40">
+            <button id="close-lightbox" aria-label="Close image modal" class="absolute top-4 right-4 z-10 bg-bark/70 text-parchment w-10 h-10 rounded-full hover:bg-clay transition-colors flex items-center justify-center">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+            <img id="lightbox-img" src="" alt="" class="w-full max-h-[75vh] object-contain bg-bark">
+            <div class="p-4 bg-parchment border-t border-ochre/30">
+                <h4 id="lightbox-title" class="text-lg font-bold text-forest font-serif">Image View</h4>
+                <p id="lightbox-caption" class="text-xs text-bark/80 mt-1"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- FOOTER WITH HTML ENTITIES REQUIREMENT      -->
+    <!-- ========================================== -->
+    <footer id="main-footer" class="bg-bark text-parchment py-10 mt-16 border-t-4 border-clay">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6 text-center sm:text-left">
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div>
+                    <h3 class="text-xl font-bold font-serif text-ochre">Lihay - Galad</h3>
+                    <p class="text-xs text-parchment/70 mt-1">
+                        &quot;The One Who Strays into the Wilderness&quot; &bull; Philippine Trail Expeditions
+                    </p>
+                </div>
+                <!-- Baybayin Footer Script -->
+                <div class="text-2xl text-ochre tracking-widest font-serif">
+                    ᜎᜒᜑᜌ᜔ &bull; ᜄᜎᜇ᜔
+                </div>
+            </div>
+
+            <hr class="border-clay/30">
+
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-parchment/70">
+                <!-- HTML Requirement: &copy;, &hearts;, &quot; Entities included -->
+                <p>
+                    &copy; 2026 Cyryll &bull; Crafted with &hearts; for the &quot;My Life Tour&quot; Project.
+                </p>
+                <div class="flex items-center space-x-4">
+                    <span>&#127956; Mountains</span>
+                    <span>&bull;</span>
+                    <span>&#127807; Wilderness</span>
+                    <span>&bull;</span>
+                    <a href="#hero" class="text-ochre hover:underline">Back to top &uarr;</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ========================================== -->
+    <!-- INTERACTIVE JAVASCRIPT LOGIC              -->
+    <!-- ========================================== -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // 1. Mobile Menu Toggle
+            const menuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuIcon = document.getElementById('menu-icon');
+            const mobileLinks = document.querySelectorAll('.mobile-link');
+
+            menuBtn.addEventListener('click', () => {
+                const isHidden = mobileMenu.classList.contains('hidden');
+                if (isHidden) {
+                    mobileMenu.classList.remove('hidden');
+                    menuIcon.classList.remove('fa-bars');
+                    menuIcon.classList.add('fa-xmark');
+                } else {
+                    mobileMenu.classList.add('hidden');
+                    menuIcon.classList.remove('fa-xmark');
+                    menuIcon.classList.add('fa-bars');
+                }
+            });
+
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                    menuIcon.classList.remove('fa-xmark');
+                    menuIcon.classList.add('fa-bars');
+                });
+            });
+
+            // 2. Destination Filter Tabs
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const galleryCards = document.querySelectorAll('.gallery-card');
+
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const filter = btn.getAttribute('data-filter');
+
+                    // Active button styling
+                    filterBtns.forEach(b => {
+                        b.classList.remove('bg-forest', 'text-parchment');
+                        b.classList.add('bg-parchment', 'text-bark');
+                    });
+                    btn.classList.remove('bg-parchment', 'text-bark');
+                    btn.classList.add('bg-forest', 'text-parchment');
+
+                    // Card visibility
+                    galleryCards.forEach(card => {
+                        if (filter === 'all' || card.classList.contains(filter)) {
+                            card.style.display = 'flex';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+
+            // 3. Image Lightbox Modal
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            const lightboxTitle = document.getElementById('lightbox-title');
+            const lightboxCaption = document.getElementById('lightbox-caption');
+            const closeLightbox = document.getElementById('close-lightbox');
+            const galleryImages = document.querySelectorAll('.gallery-img');
+
+            galleryImages.forEach(img => {
+                img.addEventListener('click', () => {
+                    lightboxImg.src = img.src;
+                    lightboxImg.alt = img.alt;
+                    const card = img.closest('article');
+                    const title = card ? card.querySelector('h3').innerText : 'Gallery View';
+                    lightboxTitle.innerText = title;
+                    lightboxCaption.innerText = img.alt;
+                    lightbox.classList.remove('hidden');
+                });
+            });
+
+            closeLightbox.addEventListener('click', () => {
+                lightbox.classList.add('hidden');
+            });
+
+            lightbox.addEventListener('click', (e) => {
+                if (e.target === lightbox) {
+                    lightbox.classList.add('hidden');
+                }
+            });
+
+            // 4. Guestbook Form Interactive Validation & Submission
+            const form = document.getElementById('life-tour-form');
+            const alertBox = document.getElementById('form-alert');
+            const alertMsg = document.getElementById('alert-message');
+
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                const name = document.getElementById('visitor_name').value.trim();
+                const conn = document.getElementById('connection').value;
+                
+                // Get checked categories
+                const checkboxes = document.querySelectorAll('input[name="favorite_section"]:checked');
+                const selectedSections = Array.from(checkboxes).map(cb => cb.value).join(', ');
+
+                alertMsg.innerHTML = `Salamat <strong>${name}</strong> (${conn})! Your entry was successfully logged in the trail book. ${selectedSections ? '<br><small>Favorite sections noted: ' + selectedSections + '</small>' : ''}`;
+                
+                alertBox.classList.remove('hidden');
+                alertBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                
+                form.reset();
+            });
+        });
+    </script>
+</body>
+</html>
